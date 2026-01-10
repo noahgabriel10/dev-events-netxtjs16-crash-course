@@ -28,4 +28,4 @@ const Page = () => {
 }
 export default Page
 
-// 1:31:51 Sekunden Course -> https://www.youtube.com/watch?v=I1V9YWqRIeI
+// 1:52:57 Sekunden Course -> https://www.youtube.com/watch?v=I1V9YWqRIeI
