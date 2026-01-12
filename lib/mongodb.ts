@@ -3,12 +3,6 @@ import mongoose from 'mongoose';
 // MongoDB connection string from environment variables
 const MONGODB_URI = process.env.MONGODB_URI;
 
-if (!MONGODB_URI) {
-  throw new Error(
-    'Please define the MONGODB_URI environment variable inside .env.local'
-  );
-}
-
 // Define types for the cached connection
 interface MongooseCache {
   conn: typeof mongoose | null;
@@ -42,6 +36,13 @@ async function connectDB(): Promise<typeof mongoose> {
 
   // Return existing connection promise if one is in progress
   if (!cached.promise) {
+
+    if (!MONGODB_URI) {
+      throw new Error(
+          'Please define the MONGODB_URI environment variable inside .env.local'
+      );
+    }
+
     const opts = {
       bufferCommands: false, // Disable Mongoose buffering to avoid issues in serverless environments
     };
